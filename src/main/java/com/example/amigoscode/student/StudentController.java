@@ -1,9 +1,7 @@
 package com.example.amigoscode.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,5 +20,10 @@ public class StudentController {
     @GetMapping("/list")
     public List<Student> getStudents() {
         return this.studentService.getStudents();
+    }
+
+    @PostMapping("/registration")
+    public void registerNewStudent(@RequestBody Student student) {
+        this.studentService.addNewStudent(student);
     }
 }
